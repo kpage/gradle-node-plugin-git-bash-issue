@@ -1,0 +1,8 @@
+{
+  "name": "gradle-node-plugin-git-bash-issue",
+  "repository": {},
+  "version": "0.0.0",
+  "devDependencies": {
+    "node-sass": "3.13.0"
+  }
+}
