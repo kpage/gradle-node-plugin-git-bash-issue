@@ -3,6 +3,7 @@ This sample project demonstrates a bug with setting the node path in gradle-node
 Steps to reproduce:
 - On Windows 10, start git bash (note on git bash settings: I am using the option "Use Windows' default console window", not MinTTY.  This does not work on MinTTY either, but the issue could be slightly different)
 - Clone this repository
+- Ensure that the "node" command is not on your PATH
 - Ensure that your yarn is clean (if yarnSetup is UP-TO-DATE, you will not see an error).  Run in the gradle-node-plugin-git-bash-issue folder:
 ```
 rm -rf .gradle/yarn
