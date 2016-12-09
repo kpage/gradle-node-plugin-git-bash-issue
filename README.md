@@ -1,19 +1,23 @@
-This sample project demonstrates a bug with setting the node path in gradle-node-plugin for the 'yarnSetup' task.  How to reproduce this issue:
+This sample project demonstrates a bug with setting the node path in gradle-node-plugin for the 'yarnSetup' task.
 
 Steps to reproduce:
 - On Windows 10, start git bash (note on git bash settings: I am using the option "Use Windows' default console window", not MinTTY.  This does not work on MinTTY either, but the issue could be slightly different)
 - Clone this repository
 - Ensure that the "node" command is not on your PATH
+```
+$ node
+bash: node: command not found
+```
 - Ensure that your yarn is clean (if yarnSetup is UP-TO-DATE, you will not see an error).  Run in the gradle-node-plugin-git-bash-issue folder:
 ```
-rm -rf .gradle/yarn
+git clean -dffxq
 ```
 - Run command
 ```
 ./gradlew yarnSetup
 ```
 
-On Windows 10 in cmd.exe, gradle-node-plugin correctly sets the path of node when running 'yarnSetup'.  However, when run in git bash, the 'yarnSetup' task fails when trying to run the `node postinstall` command with the following error:
+The task should fail with the following error:
 
 ```
 :yarnSetup
@@ -54,6 +58,8 @@ npm ERR!     C:\Users\user\repo\gradle-node-plugin-git-bash-issue\npm-debug.log
 npm ERR! code 1
 :yarnSetup FAILED
 ```
+
+On Windows 10 in cmd.exe, 'yarnSetup' runs successfully.  However, when run in git bash, the 'yarnSetup' task fails when trying to shell out to node because it is not on the path.
 
 This command should use the node that is auto-downloaded by gradle-node-plugin.  But the path is not correctly set in git bash.  If you don't have node globally installed, you will see the error.
 
