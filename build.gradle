@@ -8,3 +8,6 @@ node {
     yarnVersion = '0.17.10'
     download = true
 }
+
+println "System.getenv('Path'): ${System.getenv('Path')}"
+println "System.getenv('PATH'): ${System.getenv('PATH')}"
