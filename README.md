@@ -59,6 +59,6 @@ This command should use the node that is auto-downloaded by gradle-node-plugin. 
 
 If you do have node globally installed, it will use the wrong version (not the version required by gradle-node-plugin).  This can lead to errors as the wrong version of node can be used to create node_modules, and then the user will get errors when running commands that require node-specific versions of packages.
 
-The 'npmInstall' task works fine, it is only yarn that has this error.
+The 'npmSetup' and 'npmInstall' tasks work fine, it is only yarn that has this error.
 
 
